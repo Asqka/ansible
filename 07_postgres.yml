@@ -1,0 +1,21 @@
+
+- name: Install and configure PostgreSQL
+  hosts: NGINX
+  become: yes
+
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install PostgreSQL
+      apt:
+        name: postgresql
+        state: present
+
+    - name: Start PostgreSQL service
+      command: service postgresql start
+
+    - name: Enable PostgreSQL (docker-safe note)
+      command: echo "PostgreSQL installed and running"

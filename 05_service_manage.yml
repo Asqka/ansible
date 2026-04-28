@@ -1,0 +1,15 @@
+
+- name: Manage services on server
+  hosts: NGINX
+  become: yes
+
+  tasks:
+
+    - name: Start nginx
+      command: nginx
+
+    - name: Restart nginx
+      shell: nginx -s reload
+
+    - name: Stop nginx
+      shell: nginx -s quit

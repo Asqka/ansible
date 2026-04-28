@@ -1,0 +1,19 @@
+
+- name: Update system and reboot
+  hosts: NGINX
+  become: yes
+
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+
+    - name: Clean unnecessary packages
+      apt:
+        autoremove: yes
+        autoclean: yes
